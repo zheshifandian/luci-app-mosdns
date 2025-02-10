@@ -177,33 +177,37 @@ return view.extend({
 		o.default = false;
 
 		o = s.taboption('basic', form.DynamicList, 'local_dns', _('China DNS server'));
-		o.value('119.29.29.29', _('Tencent Public DNS (119.29.29.29)'));
 		o.value('119.28.28.28', _('Tencent Public DNS (119.28.28.28)'));
+		o.value('119.29.29.29', _('Tencent Public DNS (119.29.29.29)'));
+		o.value('https://doh.pub/dns-query', _('Tencent Public DNS (DNS over HTTPS)'));
 		o.value('223.5.5.5', _('Aliyun Public DNS (223.5.5.5)'));
 		o.value('223.6.6.6', _('Aliyun Public DNS (223.6.6.6)'));
-		o.value('180.184.1.1', _('TrafficRoute Public DNS (180.184.1.1)'));
-		o.value('180.184.2.2', _('TrafficRoute Public DNS (180.184.2.2)'));
+		o.value('https://dns.alidns.com/dns-query', _('Aliyun Public DNS (DNS over HTTPS)'));
 		o.value('114.114.114.114', _('Xinfeng Public DNS (114.114.114.114)'));
 		o.value('114.114.115.115', _('Xinfeng Public DNS (114.114.115.115)'));
-		o.value('180.76.76.76', _('Baidu Public DNS (180.76.76.76)'));
-		o.value('https://doh.pub/dns-query', _('Tencent Public DNS (DNS over HTTPS)'));
-		o.value('quic://dns.alidns.com', _('Aliyun Public DNS (DNS over QUIC)'));
-		o.value('https://dns.alidns.com/dns-query', _('Aliyun Public DNS (DNS over HTTPS)'));
-		o.value('h3://dns.alidns.com/dns-query', _('Aliyun Public DNS (DNS over HTTPS/3)'));
-		o.value('https://doh.360.cn/dns-query', _('360 Public DNS (DNS over HTTPS)'));
-		o.default = '119.29.29.29';
+		o.default = '223.5.5.5';
 		o.depends('custom_local_dns', '1');
 
 		o = s.taboption('basic', form.DynamicList, 'remote_dns', _('Remote DNS server'));
-		o.value('tls://1.1.1.1', _('CloudFlare Public DNS (1.1.1.1)'));
-		o.value('tls://1.0.0.1', _('CloudFlare Public DNS (1.0.0.1)'));
-		o.value('tls://8.8.8.8', _('Google Public DNS (8.8.8.8)'));
-		o.value('tls://8.8.4.4', _('Google Public DNS (8.8.4.4)'));
-		o.value('tls://9.9.9.9', _('Quad9 Public DNS (9.9.9.9)'));
-		o.value('tls://149.112.112.112', _('Quad9 Public DNS (149.112.112.112)'));
-		o.value('tls://208.67.222.222', _('Cisco Public DNS (208.67.222.222)'));
-		o.value('tls://208.67.220.220', _('Cisco Public DNS (208.67.220.220)'));
-		o.default = 'tls://8.8.8.8';
+		o.value('1.0.0.1', _('CloudFlare Public DNS (1.0.0.1)'));
+		o.value('1.1.1.1', _('CloudFlare Public DNS (1.1.1.1)'));
+		o.value('https://dns.cloudflare.com/dns-query', _('Cloudflare Public DNS (DNS over HTTPS)'));
+		o.value('8.8.4.4', _('Google Public DNS (8.8.4.4)'));
+		o.value('8.8.8.8', _('Google Public DNS (8.8.8.8)'));
+		o.value('https://dns.google/dns-query', _('Google Public DNS (DNS over HTTPS)'));
+		o.value('9.9.9.9', _('Quad9 Public DNS (9.9.9.9)'));
+		o.value('149.112.112.112', _('Quad9 Public DNS (149.112.112.112)'));
+		o.value('https://dns.quad9.net/dns-query', _('Quad9 Public DNS (DNS over HTTPS)'));
+		o.value('45.11.45.11', _('DNS.SB Public DNS (45.11.45.11)'));
+		o.value('185.222.222.222', _('DNS.SB Public DNS (185.222.222.222)'));
+		o.value('https://doh.dns.sb/dns-query', _('DNS.SB Public DNS (DNS over HTTPS)'));
+		o.value('94.140.14.140', _('AdGuard Non-filtering Public DNS (94.140.14.140)'));
+		o.value('94.140.14.141', _('AdGuard Non-filtering Public DNS (94.140.14.141)'));
+		o.value('https://unfiltered.adguard-dns.com/dns-query', _('AdGuard Non-filtering Public DNS (DNS over HTTPS)'));
+		o.value('208.67.220.220', _('Cisco Public DNS (208.67.220.220)'));
+		o.value('208.67.222.222', _('Cisco Public DNS (208.67.222.222)'));
+		o.value('https://doh.opendns.com/dns-query', _('Cisco Public DNS (DNS over HTTPS)'));
+		o.default = '8.8.4.4';
 		o.depends('configfile', '/var/etc/mosdns.json');
 
 		o = s.taboption('basic', form.Flag, 'custom_stream_media_dns', _('Custom Stream Media DNS'),
@@ -212,29 +216,30 @@ return view.extend({
 		o.default = false;
 
 		o = s.taboption('basic', form.DynamicList, 'stream_media_dns', _('Streaming Media DNS server'));
-		o.value('tls://1.1.1.1', _('CloudFlare Public DNS (1.1.1.1)'));
-		o.value('tls://1.0.0.1', _('CloudFlare Public DNS (1.0.0.1)'));
-		o.value('tls://8.8.8.8', _('Google Public DNS (8.8.8.8)'));
-		o.value('tls://8.8.4.4', _('Google Public DNS (8.8.4.4)'));
-		o.value('tls://9.9.9.9', _('Quad9 Public DNS (9.9.9.9)'));
-		o.value('tls://149.112.112.112', _('Quad9 Public DNS (149.112.112.112)'));
-		o.value('tls://208.67.222.222', _('Cisco Public DNS (208.67.222.222)'));
-		o.value('tls://208.67.220.220', _('Cisco Public DNS (208.67.220.220)'));
-		o.default = 'tls://8.8.8.8';
+		o.value('1.0.0.1', _('CloudFlare Public DNS (1.0.0.1)'));
+		o.value('1.1.1.1', _('CloudFlare Public DNS (1.1.1.1)'));
+		o.value('https://dns.cloudflare.com/dns-query', _('Cloudflare Public DNS (DNS over HTTPS)'));
+		o.value('8.8.4.4', _('Google Public DNS (8.8.4.4)'));
+		o.value('8.8.8.8', _('Google Public DNS (8.8.8.8)'));
+		o.value('https://dns.google/dns-query', _('Google Public DNS (DNS over HTTPS)'));
+		o.value('9.9.9.9', _('Quad9 Public DNS (9.9.9.9)'));
+		o.value('149.112.112.112', _('Quad9 Public DNS (149.112.112.112)'));
+		o.value('https://dns.quad9.net/dns-query', _('Quad9 Public DNS (DNS over HTTPS)'));
+		o.value('208.67.220.220', _('Cisco Public DNS (208.67.220.220)'));
+		o.value('208.67.222.222', _('Cisco Public DNS (208.67.222.222)'));
+		o.value('https://doh.opendns.com/dns-query', _('Cisco Public DNS (DNS over HTTPS)'));
+		o.default = '8.8.4.4';
 		o.depends('custom_stream_media_dns', '1');
 
 		o = s.taboption('basic', form.Value, 'bootstrap_dns', _('Bootstrap DNS servers'),
 			_('Bootstrap DNS servers are used to resolve IP addresses of the DoH/DoT resolvers you specify as upstreams'));
-		o.value('119.29.29.29', _('Tencent Public DNS (119.29.29.29)'));
 		o.value('119.28.28.28', _('Tencent Public DNS (119.28.28.28)'));
+		o.value('119.29.29.29', _('Tencent Public DNS (119.29.29.29)'));
 		o.value('223.5.5.5', _('Aliyun Public DNS (223.5.5.5)'));
 		o.value('223.6.6.6', _('Aliyun Public DNS (223.6.6.6)'));
 		o.value('114.114.114.114', _('Xinfeng Public DNS (114.114.114.114)'));
 		o.value('114.114.115.115', _('Xinfeng Public DNS (114.114.115.115)'));
-		o.value('180.76.76.76', _('Baidu Public DNS (180.76.76.76)'));
-		o.value('8.8.8.8', _('Google Public DNS (8.8.8.8)'));
-		o.value('1.1.1.1', _('CloudFlare Public DNS (1.1.1.1)'));
-		o.default = '119.29.29.29';
+		o.default = '223.5.5.5';
 		o.depends('configfile', '/var/etc/mosdns.json');
 
 		/* advanced */
@@ -287,7 +292,7 @@ return view.extend({
 
 		o = s.taboption('advanced', form.Value, 'cache_size', _('DNS Cache Size'));
 		o.datatype = 'and(uinteger,min(0))';
-		o.default = 8000;
+		o.default = 40000;
 		o.depends('cache', '1');
 
 		o = s.taboption('advanced', form.Value, 'lazy_cache_ttl', _('Lazy Cache TTL'),

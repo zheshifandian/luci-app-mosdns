@@ -12,9 +12,7 @@ PKG_MAINTAINER:=sbwml <admin@cooluc.com>
 
 define Package/$(PKG_NAME)/conffiles
 /etc/config/mosdns
-/etc/mosdns/cache.dump
-/etc/mosdns/config_custom.yaml
-/etc/mosdns/rule
+/etc/mosdns/
 endef
 
 include $(TOPDIR)/feeds/luci/luci.mk

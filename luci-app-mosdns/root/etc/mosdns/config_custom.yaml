@@ -44,16 +44,18 @@ plugins:
     type: forward
     args:
       upstreams:
-        - addr: "https://doh.pub/dns-query"
-          bootstrap: 180.76.76.76
-        - addr: 119.29.29.29
+        - addr: "https://dns.alidns.com/dns-query"
+          bootstrap: 223.5.5.5
+        - addr: 223.5.5.5
 
   # 转发至远程服务器
   - tag: forward_remote
     type: forward
     args:
       upstreams:
-        - addr: tls://8.8.8.8
+        - addr: "https://dns.google/dns-query"
+          bootstrap: 8.8.4.4
+        - addr: 8.8.4.4
           enable_pipeline: false
 
   # 国内解析
