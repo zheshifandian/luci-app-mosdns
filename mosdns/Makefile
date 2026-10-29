@@ -5,12 +5,14 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=mosdns
-PKG_VERSION:=5.3.4
-PKG_RELEASE:=15
+PKG_VERSION:=5.3.5
+PKG_RELEASE:=1
 
-PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://codeload.github.com/IrineSistiana/mosdns/tar.gz/v$(PKG_VERSION)?
-PKG_HASH:=0302a685db2a6c3c09af7bf4ff0dffd24f1e583383a47f064564f5270033671b
+PKG_SOURCE_PROTO:=git
+PKG_SOURCE_URL:=https://github.com/maoxikun/mosdns.git
+PKG_SOURCE_DATE:=2026-10.23
+PKG_MIRROR_HASH:=a335f098ae4c60bab3d2f67c13b659b649dbbe445fc445dec11a5fc19a335cda
+PKG_SOURCE_VERSION:=00d895c1ead8161556e65b5cbc3e2e3baec6a4a2
 
 PKG_LICENSE:=GPL-3.0
 PKG_LICENSE_FILE:=LICENSE
@@ -33,6 +35,12 @@ define Package/mosdns
   TITLE:=A plug-in DNS forwarder/splitter
   URL:=https://github.com/IrineSistiana/mosdns
   DEPENDS:=$(GO_ARCH_DEPENDS) +ca-bundle
+endef
+
+define Package/mosdns/description
+MosDNS is a flexible, plugin-driven DNS resolver/forwarder written in Go.
+Supports DNS split routing, DoH/DoT/QUIC upstream, custom rule filtering,
+cache acceleration and customized DNS policy for home routers.
 endef
 
 define Package/mosdns/install
